@@ -1,7 +1,6 @@
 #include "test_runner.h"
 
 #include <vector>
-#include <deque>
 using namespace std;
 
 template <typename T>
@@ -52,7 +51,6 @@ public:
           {
               Node* nodeForRemove = node->next;
               node->next = nodeForRemove->next;
-              //removedPtrs_.push_back(nodeForRemove);
               delete nodeForRemove;
           }
       }
