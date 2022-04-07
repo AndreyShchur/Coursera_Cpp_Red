@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdlib>
+#include <algorithm>
 
 // Реализуйте шаблон SimpleVector
 template <typename T>
@@ -27,6 +28,8 @@ public:
   {
       return data[index];
   }
+
+  void operator=(const SimpleVector);
 
   T* begin()
   {
@@ -78,6 +81,19 @@ private:
     // Quantity of filled in position of vector
     size_t fill_item_qty;
 };
+
+template<typename T>
+void SimpleVector<T>::operator=(const SimpleVector<T> other)
+{
+    if (data == nullptr)
+    {
+        data = new T[other.Capacity()];
+    }
+    end_ = data + other.Capacity();
+    fill_item_qty = other.Size();
+
+    std::copy(other.begin(), other.end(), begin());
+}
 
 
 /*
